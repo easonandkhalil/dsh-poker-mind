@@ -1,0 +1,63 @@
+{
+  "name": "dsh-poker-mind",
+  "version": "0.1.2",
+  "description": "A side-panel Texas Hold'em table with a live coach for DeepSeek Harness.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Poker Mind contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/easonandkhalil/dsh-poker-mind.git"
+  },
+  "homepage": "https://github.com/easonandkhalil/dsh-poker-mind#readme",
+  "bugs": {
+    "url": "https://github.com/easonandkhalil/dsh-poker-mind/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "poker",
+    "texas-holdem",
+    "game",
+    "coach"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "icon.svg",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "README.md",
+    "INSTALL.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "screenshots.json",
+    "assets"
+  ],
+  "scripts": {
+    "build": "node src/build-client.cjs",
+    "test": "node --check client.js && node tests/smoke-client.cjs && node tests/flow-client.cjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}
